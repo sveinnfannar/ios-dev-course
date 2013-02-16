@@ -33,33 +33,32 @@
 }
 
 // 
--(id) init
+- (void)onEnter
 {
-	if( (self=[super init])) {
+    [super onEnter];
+    
+    // ask director for the window size
+    CGSize size = [[CCDirector sharedDirector] winSize];
 
-		// ask director for the window size
-		CGSize size = [[CCDirector sharedDirector] winSize];
+    CCSprite *background;
+    
+    if( UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone ) {
+        background = [CCSprite spriteWithFile:@"Default.png"];
+        background.rotation = 90;
+    } else {
+        background = [CCSprite spriteWithFile:@"Default-Landscape~ipad.png"];
+    }
+    background.position = ccp(size.width/2, size.height/2);
 
-		CCSprite *background;
-		
-		if( UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone ) {
-			background = [CCSprite spriteWithFile:@"Default.png"];
-			background.rotation = 90;
-		} else {
-			background = [CCSprite spriteWithFile:@"Default-Landscape~ipad.png"];
-		}
-		background.position = ccp(size.width/2, size.height/2);
-
-		// add the label as a child to this Layer
-		[self addChild: background];
-	}
-	
-	return self;
+    // add the label as a child to this Layer
+    [self addChild: background];
+    
+    // In one second transition to the new scene
+    [self scheduleOnce:@selector(makeTransition:) delay:1];
 }
 
--(void) onEnter
+-(void) makeTransition:(ccTime)dt
 {
-	[super onEnter];
-//	[[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:[HelloWorldLayer scene] ]];
+//	[[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:[MenuScene node] withColor:ccWHITE]];
 }
 @end
