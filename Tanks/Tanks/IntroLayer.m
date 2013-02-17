@@ -9,6 +9,7 @@
 
 // Import the interfaces
 #import "IntroLayer.h"
+#import "GameScene.h"
 
 
 #pragma mark - IntroLayer
@@ -59,6 +60,6 @@
 
 -(void) makeTransition:(ccTime)dt
 {
-//	[[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:[MenuScene node] withColor:ccWHITE]];
+	[[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:[GameScene node] withColor:ccWHITE]];
 }
 @end
