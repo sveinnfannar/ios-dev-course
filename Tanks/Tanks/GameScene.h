@@ -8,12 +8,15 @@
 
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
+#import "ControlsLayer.h"
 
 @class Tank;
-@interface GameScene : CCScene
+@interface GameScene : CCScene<TouchCommands>
 {
     Tank *_tank1;
     Tank *_tank2;
+    
+    ControlsLayer *_controlsLayer;
     
     NSDictionary *_configuration;
 }

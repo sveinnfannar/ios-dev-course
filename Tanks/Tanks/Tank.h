@@ -8,13 +8,19 @@
 
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
+#import "Constants.h"
 
 @interface Tank : CCNode
 {
     CCSprite *_bodySprite;
     CCSprite *_turretSprite;
+    
+    TankDirection _direction;
 }
 
-- (id)initWithPosition:(CGPoint)position;
+- (id)initWithPosition:(CGPoint)position direction:(TankDirection)direction;
+
+- (void)animateTurret;
+- (void)stopTurret;
 
 @end

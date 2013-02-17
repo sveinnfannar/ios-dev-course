@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		41CF899B16D0F26900C26A1B /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 41CF899A16D0F26900C26A1B /* GameScene.m */; };
 		41CF89A016D0F96700C26A1B /* Tank.m in Sources */ = {isa = PBXBuildFile; fileRef = 41CF899F16D0F96700C26A1B /* Tank.m */; };
+		41CF89A416D10ED200C26A1B /* ControlsLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 41CF89A316D10ED100C26A1B /* ControlsLayer.m */; };
 		A05A983216D055030041B142 /* Configuration.plist in Resources */ = {isa = PBXBuildFile; fileRef = A05A983116D055030041B142 /* Configuration.plist */; };
 		A0DA11D216D00E8D00DDFCF8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0DA11D116D00E8D00DDFCF8 /* QuartzCore.framework */; };
 		A0DA11D416D00E8D00DDFCF8 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0DA11D316D00E8D00DDFCF8 /* OpenGLES.framework */; };
@@ -188,6 +189,9 @@
 		41CF899A16D0F26900C26A1B /* GameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameScene.m; sourceTree = "<group>"; };
 		41CF899E16D0F96700C26A1B /* Tank.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tank.h; sourceTree = "<group>"; };
 		41CF899F16D0F96700C26A1B /* Tank.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tank.m; sourceTree = "<group>"; };
+		41CF89A116D1070C00C26A1B /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		41CF89A216D10ED100C26A1B /* ControlsLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlsLayer.h; sourceTree = "<group>"; };
+		41CF89A316D10ED100C26A1B /* ControlsLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ControlsLayer.m; sourceTree = "<group>"; };
 		A05A983116D055030041B142 /* Configuration.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Configuration.plist; path = Resources/Configuration.plist; sourceTree = "<group>"; };
 		A0DA11CE16D00E8D00DDFCF8 /* Tanks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tanks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0DA11D116D00E8D00DDFCF8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -602,6 +606,9 @@
 			children = (
 				A0DA136A16D00E8F00DDFCF8 /* AppDelegate.h */,
 				A0DA136B16D00E8F00DDFCF8 /* AppDelegate.m */,
+				41CF89A116D1070C00C26A1B /* Constants.h */,
+				41CF89A216D10ED100C26A1B /* ControlsLayer.h */,
+				41CF89A316D10ED100C26A1B /* ControlsLayer.m */,
 				41CF899916D0F26900C26A1B /* GameScene.h */,
 				41CF899A16D0F26900C26A1B /* GameScene.m */,
 				A0DA137016D00E8F00DDFCF8 /* IntroLayer.h */,
@@ -1320,6 +1327,7 @@
 				A0DA15D416D010AA00DDFCF8 /* SimpleAudioEngine.m in Sources */,
 				41CF899B16D0F26900C26A1B /* GameScene.m in Sources */,
 				41CF89A016D0F96700C26A1B /* Tank.m in Sources */,
+				41CF89A416D10ED200C26A1B /* ControlsLayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,6 +8,8 @@
 
 #import "GameScene.h"
 #import "Tank.h"
+#import "Constants.h"
+#import "ControlsLayer.h"
 
 enum
 {
@@ -44,13 +46,33 @@ enum
         background.anchorPoint = CGPointZero;
         [self addChild:background z:kDepthSky];
         
-        CGPoint point = CGPointFromString(_configuration[@"tank1Position"]);
+        CGPoint point1 = CGPointFromString(_configuration[@"tank1Position"]);
+        CGPoint point2 = CGPointFromString(_configuration[@"tank2Position"]);
         
-        _tank1 = [[Tank alloc] initWithPosition:point];
+        _tank1 = [[Tank alloc] initWithPosition:point1 direction:kTankDirectionRight];
         [self addChild:_tank1 z:kDepthTank];
+        
+        _tank2 = [[Tank alloc] initWithPosition:point2 direction:kTankDirectionLeft];
+        [self addChild:_tank2 z:kDepthTank];
+        
+        [_tank2 animateTurret];
+        
+        _controlsLayer = [[ControlsLayer alloc] initWithDelegate:self];
+        [self addChild:_controlsLayer z:kDepthControls];
     }
     
     return self;
 }
+
+- (void)fingerDown
+{
+    [_tank1 animateTurret];
+}
+
+- (void)fingerUp
+{
+    [_tank1 stopTurret];
+}
+
 
 @end
