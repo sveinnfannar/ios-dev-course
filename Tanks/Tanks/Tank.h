@@ -10,6 +10,12 @@
 #import "cocos2d.h"
 #import "Constants.h"
 
+typedef enum
+{
+    kTankDirectionLeft,
+    kTankDirectionRight
+} TankDirection;
+
 @interface Tank : CCNode
 {
     CCSprite *_bodySprite;
@@ -18,9 +24,11 @@
     TankDirection _direction;
 }
 
+@property (nonatomic, readonly) BOOL isTurretAnimated;
+
 - (id)initWithPosition:(CGPoint)position direction:(TankDirection)direction;
 
 - (void)animateTurret;
-- (void)stopTurret;
+- (void)stopTurretAnimation;
 
 @end

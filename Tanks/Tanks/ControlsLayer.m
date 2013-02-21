@@ -17,7 +17,8 @@
     if (self != nil)
     {
         _delegate = delegate;
-        
+     
+        // Enable touches on this layer and set the mode to "One by one"
         self.touchMode = kCCTouchesOneByOne;
         self.touchEnabled = YES;
     }

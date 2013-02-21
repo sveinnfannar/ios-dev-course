@@ -7,9 +7,12 @@
 //
 
 #import "Tank.h"
+#import "Constants.h"
 
 
 @implementation Tank
+
+@dynamic isTurretAnimated;
 
 - (id)initWithPosition:(CGPoint)position direction:(TankDirection)direction
 {
@@ -18,14 +21,20 @@
     {
         _direction = direction;
         
+        // Load the body and the turret sprites and compose them
+        // Remember that Tank is an empty CCNode and we're adding these two sprites as children of the empty node
+        // This way we can decide the draw order and have the turret behind the tank's body
+        // Also note that we're not changing the position of the CCNode. Instead we "offset" the body and turret
+        // to the desired position. This will make sense when we integrate the physics engine
         _turretSprite = [CCSprite spriteWithFile:@"Turret.png"];
         _turretSprite.position = ccpAdd(position, ccp(0, 12));
-        [self addChild:_turretSprite];
+        [self addChild:_turretSprite z:kDepthTurret];
         
         _bodySprite = [CCSprite spriteWithFile:@"Tank.png"];
         _bodySprite.position = position;
-        [self addChild:_bodySprite];
+        [self addChild:_bodySprite z:kDepthTank];
         
+        // Here we flip and tweak the sprites depending on the direction they face
         if (direction == kTankDirectionLeft)
         {
             _turretSprite.flipX = YES;
@@ -61,9 +70,14 @@
     [_turretSprite runAction:[CCRepeatForever actionWithAction:sequence]];
 }
 
-- (void)stopTurret
+- (void)stopTurretAnimation
 {
     [_turretSprite stopAllActions];
+}
+
+- (BOOL)isTurretAnimated
+{
+    return (_turretSprite.numberOfRunningActions > 0);
 }
 
 @end

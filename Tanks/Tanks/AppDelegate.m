@@ -72,7 +72,7 @@
 	// Assume that PVR images have premultiplied alpha
 	[CCTexture2D PVRImagesHavePremultipliedAlpha:YES];
 
-	// and add the scene to the stack. The director will run it when it automatically when the view is displayed.
+	// and add the scene to the stack. The director will run it automatically when the view is displayed.
 	[director_ pushScene: [IntroLayer scene]];
     
 	// Create a Navigation Controller with the Director

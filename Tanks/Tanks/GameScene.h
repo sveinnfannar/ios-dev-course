@@ -13,8 +13,7 @@
 @class Tank;
 @interface GameScene : CCScene<TouchCommands>
 {
-    Tank *_tank1;
-    Tank *_tank2;
+    Tank *_tanks[2];
     
     ControlsLayer *_controlsLayer;
     

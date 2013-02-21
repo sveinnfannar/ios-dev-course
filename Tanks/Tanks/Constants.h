@@ -6,8 +6,20 @@
 //  Copyright (c) 2013 Marco Bancale. All rights reserved.
 //
 
-typedef enum
+
+// "z" depths for different objects on screen
+enum
 {
-    kTankDirectionLeft,
-    kTankDirectionRight
-} TankDirection;
+    kDepthSky,
+    kDepthLandscape,
+    kDepthProjection,
+    kDepthTurret,
+    kDepthTank,
+    kDepthProjectile,
+    kDepthExplosion,
+    kDepthDebugNode,
+    kDepthHud,
+    kDepthControls
+};
+
+
