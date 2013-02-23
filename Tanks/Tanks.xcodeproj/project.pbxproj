@@ -7,6 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		413A762216D8F25C0026BC04 /* Projectile.m in Sources */ = {isa = PBXBuildFile; fileRef = 413A762116D8F25B0026BC04 /* Projectile.m */; };
+		413A763D16D90A900026BC04 /* ColoredCircleSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = 413A763216D90A900026BC04 /* ColoredCircleSprite.m */; };
+		413A763E16D90A900026BC04 /* ColoredSquareSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = 413A763416D90A900026BC04 /* ColoredSquareSprite.m */; };
+		413A763F16D90A900026BC04 /* SneakyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 413A763616D90A900026BC04 /* SneakyButton.m */; };
+		413A764016D90A900026BC04 /* SneakyButtonSkinnedBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 413A763816D90A900026BC04 /* SneakyButtonSkinnedBase.m */; };
+		413A764116D90A900026BC04 /* SneakyJoystick.m in Sources */ = {isa = PBXBuildFile; fileRef = 413A763A16D90A900026BC04 /* SneakyJoystick.m */; };
+		413A764216D90A900026BC04 /* SneakyJoystickSkinnedBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 413A763C16D90A900026BC04 /* SneakyJoystickSkinnedBase.m */; };
+		413A764B16D90AB40026BC04 /* fireButtonIdle.png in Resources */ = {isa = PBXBuildFile; fileRef = 413A764316D90AB30026BC04 /* fireButtonIdle.png */; };
+		413A764C16D90AB40026BC04 /* fireButtonPressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 413A764416D90AB30026BC04 /* fireButtonPressed.png */; };
+		413A764D16D90AB40026BC04 /* joystickBack.png in Resources */ = {isa = PBXBuildFile; fileRef = 413A764516D90AB30026BC04 /* joystickBack.png */; };
+		413A764E16D90AB40026BC04 /* joystickKnob.png in Resources */ = {isa = PBXBuildFile; fileRef = 413A764616D90AB30026BC04 /* joystickKnob.png */; };
+		413A764F16D90AB40026BC04 /* fireButtonIdle-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 413A764716D90AB30026BC04 /* fireButtonIdle-hd.png */; };
+		413A765016D90AB40026BC04 /* fireButtonPressed-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 413A764816D90AB30026BC04 /* fireButtonPressed-hd.png */; };
+		413A765116D90AB40026BC04 /* joystickBack-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 413A764916D90AB40026BC04 /* joystickBack-hd.png */; };
+		413A765216D90AB40026BC04 /* joystickKnob-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 413A764A16D90AB40026BC04 /* joystickKnob-hd.png */; };
+		413A765D16D9176E0026BC04 /* Button.m in Sources */ = {isa = PBXBuildFile; fileRef = 413A765916D917460026BC04 /* Button.m */; };
+		413A765E16D9176E0026BC04 /* Joystick.m in Sources */ = {isa = PBXBuildFile; fileRef = 413A765B16D917500026BC04 /* Joystick.m */; };
 		41CF899B16D0F26900C26A1B /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 41CF899A16D0F26900C26A1B /* GameScene.m */; };
 		41CF89A016D0F96700C26A1B /* Tank.m in Sources */ = {isa = PBXBuildFile; fileRef = 41CF899F16D0F96700C26A1B /* Tank.m */; };
 		41CF89A416D10ED200C26A1B /* ControlsLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 41CF89A316D10ED100C26A1B /* ControlsLayer.m */; };
@@ -185,6 +202,32 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		413A762016D8F25B0026BC04 /* Projectile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Projectile.h; sourceTree = "<group>"; };
+		413A762116D8F25B0026BC04 /* Projectile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Projectile.m; sourceTree = "<group>"; };
+		413A763116D90A900026BC04 /* ColoredCircleSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColoredCircleSprite.h; sourceTree = "<group>"; };
+		413A763216D90A900026BC04 /* ColoredCircleSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColoredCircleSprite.m; sourceTree = "<group>"; };
+		413A763316D90A900026BC04 /* ColoredSquareSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColoredSquareSprite.h; sourceTree = "<group>"; };
+		413A763416D90A900026BC04 /* ColoredSquareSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColoredSquareSprite.m; sourceTree = "<group>"; };
+		413A763516D90A900026BC04 /* SneakyButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SneakyButton.h; sourceTree = "<group>"; };
+		413A763616D90A900026BC04 /* SneakyButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SneakyButton.m; sourceTree = "<group>"; };
+		413A763716D90A900026BC04 /* SneakyButtonSkinnedBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SneakyButtonSkinnedBase.h; sourceTree = "<group>"; };
+		413A763816D90A900026BC04 /* SneakyButtonSkinnedBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SneakyButtonSkinnedBase.m; sourceTree = "<group>"; };
+		413A763916D90A900026BC04 /* SneakyJoystick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SneakyJoystick.h; sourceTree = "<group>"; };
+		413A763A16D90A900026BC04 /* SneakyJoystick.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SneakyJoystick.m; sourceTree = "<group>"; };
+		413A763B16D90A900026BC04 /* SneakyJoystickSkinnedBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SneakyJoystickSkinnedBase.h; sourceTree = "<group>"; };
+		413A763C16D90A900026BC04 /* SneakyJoystickSkinnedBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SneakyJoystickSkinnedBase.m; sourceTree = "<group>"; };
+		413A764316D90AB30026BC04 /* fireButtonIdle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fireButtonIdle.png; path = Resources/fireButtonIdle.png; sourceTree = "<group>"; };
+		413A764416D90AB30026BC04 /* fireButtonPressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fireButtonPressed.png; path = Resources/fireButtonPressed.png; sourceTree = "<group>"; };
+		413A764516D90AB30026BC04 /* joystickBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = joystickBack.png; path = Resources/joystickBack.png; sourceTree = "<group>"; };
+		413A764616D90AB30026BC04 /* joystickKnob.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = joystickKnob.png; path = Resources/joystickKnob.png; sourceTree = "<group>"; };
+		413A764716D90AB30026BC04 /* fireButtonIdle-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "fireButtonIdle-hd.png"; path = "Resources/fireButtonIdle-hd.png"; sourceTree = "<group>"; };
+		413A764816D90AB30026BC04 /* fireButtonPressed-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "fireButtonPressed-hd.png"; path = "Resources/fireButtonPressed-hd.png"; sourceTree = "<group>"; };
+		413A764916D90AB40026BC04 /* joystickBack-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "joystickBack-hd.png"; path = "Resources/joystickBack-hd.png"; sourceTree = "<group>"; };
+		413A764A16D90AB40026BC04 /* joystickKnob-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "joystickKnob-hd.png"; path = "Resources/joystickKnob-hd.png"; sourceTree = "<group>"; };
+		413A765916D917460026BC04 /* Button.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Button.m; sourceTree = "<group>"; };
+		413A765A16D917490026BC04 /* Button.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Button.h; sourceTree = "<group>"; };
+		413A765B16D917500026BC04 /* Joystick.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Joystick.m; sourceTree = "<group>"; };
+		413A765C16D9175B0026BC04 /* Joystick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Joystick.h; sourceTree = "<group>"; };
 		41CF899916D0F26900C26A1B /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
 		41CF899A16D0F26900C26A1B /* GameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameScene.m; sourceTree = "<group>"; };
 		41CF899E16D0F96700C26A1B /* Tank.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tank.h; sourceTree = "<group>"; };
@@ -567,6 +610,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		413A763016D90A900026BC04 /* SneakyInput */ = {
+			isa = PBXGroup;
+			children = (
+				413A763116D90A900026BC04 /* ColoredCircleSprite.h */,
+				413A763216D90A900026BC04 /* ColoredCircleSprite.m */,
+				413A763316D90A900026BC04 /* ColoredSquareSprite.h */,
+				413A763416D90A900026BC04 /* ColoredSquareSprite.m */,
+				413A763516D90A900026BC04 /* SneakyButton.h */,
+				413A763616D90A900026BC04 /* SneakyButton.m */,
+				413A763716D90A900026BC04 /* SneakyButtonSkinnedBase.h */,
+				413A763816D90A900026BC04 /* SneakyButtonSkinnedBase.m */,
+				413A763916D90A900026BC04 /* SneakyJoystick.h */,
+				413A763A16D90A900026BC04 /* SneakyJoystick.m */,
+				413A763B16D90A900026BC04 /* SneakyJoystickSkinnedBase.h */,
+				413A763C16D90A900026BC04 /* SneakyJoystickSkinnedBase.m */,
+			);
+			name = SneakyInput;
+			path = libs/SneakyInput;
+			sourceTree = "<group>";
+		};
 		A0DA11C516D00E8D00DDFCF8 = {
 			isa = PBXGroup;
 			children = (
@@ -606,6 +669,8 @@
 			children = (
 				A0DA136A16D00E8F00DDFCF8 /* AppDelegate.h */,
 				A0DA136B16D00E8F00DDFCF8 /* AppDelegate.m */,
+				413A765916D917460026BC04 /* Button.m */,
+				413A765A16D917490026BC04 /* Button.h */,
 				41CF89A116D1070C00C26A1B /* Constants.h */,
 				41CF89A216D10ED100C26A1B /* ControlsLayer.h */,
 				41CF89A316D10ED100C26A1B /* ControlsLayer.m */,
@@ -613,6 +678,10 @@
 				41CF899A16D0F26900C26A1B /* GameScene.m */,
 				A0DA137016D00E8F00DDFCF8 /* IntroLayer.h */,
 				A0DA137116D00E8F00DDFCF8 /* IntroLayer.m */,
+				413A765B16D917500026BC04 /* Joystick.m */,
+				413A765C16D9175B0026BC04 /* Joystick.h */,
+				413A762016D8F25B0026BC04 /* Projectile.h */,
+				413A762116D8F25B0026BC04 /* Projectile.m */,
 				41CF899E16D0F96700C26A1B /* Tank.h */,
 				41CF899F16D0F96700C26A1B /* Tank.m */,
 				A0DA11E416D00E8D00DDFCF8 /* Resources */,
@@ -625,6 +694,14 @@
 		A0DA11E416D00E8D00DDFCF8 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				413A764316D90AB30026BC04 /* fireButtonIdle.png */,
+				413A764416D90AB30026BC04 /* fireButtonPressed.png */,
+				413A764516D90AB30026BC04 /* joystickBack.png */,
+				413A764616D90AB30026BC04 /* joystickKnob.png */,
+				413A764716D90AB30026BC04 /* fireButtonIdle-hd.png */,
+				413A764816D90AB30026BC04 /* fireButtonPressed-hd.png */,
+				413A764916D90AB40026BC04 /* joystickBack-hd.png */,
+				413A764A16D90AB40026BC04 /* joystickKnob-hd.png */,
 				A05A983116D055030041B142 /* Configuration.plist */,
 				A0DA160516D0179F00DDFCF8 /* Arrow-hd.png */,
 				A0DA160616D0179F00DDFCF8 /* Arrow.png */,
@@ -681,6 +758,7 @@
 		A0DA120216D00E8D00DDFCF8 /* libs */ = {
 			isa = PBXGroup;
 			children = (
+				413A763016D90A900026BC04 /* SneakyInput */,
 				A0DA15D516D0125900DDFCF8 /* ChipmunkPro-iPhone-Trial */,
 				A0DA15C716D010AA00DDFCF8 /* CocosDenshion */,
 				A0DA13A516D0106600DDFCF8 /* cocos2d */,
@@ -1207,6 +1285,14 @@
 				A0DA164516D0179F00DDFCF8 /* WindArrow-hd.png in Resources */,
 				A0DA164616D0179F00DDFCF8 /* WindArrow.png in Resources */,
 				A05A983216D055030041B142 /* Configuration.plist in Resources */,
+				413A764B16D90AB40026BC04 /* fireButtonIdle.png in Resources */,
+				413A764C16D90AB40026BC04 /* fireButtonPressed.png in Resources */,
+				413A764D16D90AB40026BC04 /* joystickBack.png in Resources */,
+				413A764E16D90AB40026BC04 /* joystickKnob.png in Resources */,
+				413A764F16D90AB40026BC04 /* fireButtonIdle-hd.png in Resources */,
+				413A765016D90AB40026BC04 /* fireButtonPressed-hd.png in Resources */,
+				413A765116D90AB40026BC04 /* joystickBack-hd.png in Resources */,
+				413A765216D90AB40026BC04 /* joystickKnob-hd.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1328,6 +1414,15 @@
 				41CF899B16D0F26900C26A1B /* GameScene.m in Sources */,
 				41CF89A016D0F96700C26A1B /* Tank.m in Sources */,
 				41CF89A416D10ED200C26A1B /* ControlsLayer.m in Sources */,
+				413A762216D8F25C0026BC04 /* Projectile.m in Sources */,
+				413A763D16D90A900026BC04 /* ColoredCircleSprite.m in Sources */,
+				413A763E16D90A900026BC04 /* ColoredSquareSprite.m in Sources */,
+				413A763F16D90A900026BC04 /* SneakyButton.m in Sources */,
+				413A764016D90A900026BC04 /* SneakyButtonSkinnedBase.m in Sources */,
+				413A764116D90A900026BC04 /* SneakyJoystick.m in Sources */,
+				413A764216D90A900026BC04 /* SneakyJoystickSkinnedBase.m in Sources */,
+				413A765D16D9176E0026BC04 /* Button.m in Sources */,
+				413A765E16D9176E0026BC04 /* Joystick.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

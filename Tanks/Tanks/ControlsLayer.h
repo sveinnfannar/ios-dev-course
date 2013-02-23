@@ -9,19 +9,16 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 
-@protocol TouchCommands <NSObject>
-
-- (void)fingerDown;
-- (void)fingerUp;
-
-@end
-
+@class Button;
+@class Joystick;
 
 @interface ControlsLayer : CCLayer
 {
-    id<TouchCommands> _delegate;
+    Button *_button;
+    Joystick *_joystick;
 }
 
-- (id)initWithDelegate:(id<TouchCommands>)delegate;
+@property (readonly) BOOL isButtonToggled;
+@property (readonly) CGFloat joystickAngle;
 
 @end

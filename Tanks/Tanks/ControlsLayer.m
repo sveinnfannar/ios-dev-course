@@ -7,39 +7,39 @@
 //
 
 #import "ControlsLayer.h"
-
+#import "Button.h"
+#import "Joystick.h"
 
 @implementation ControlsLayer
 
-- (id)initWithDelegate:(id<TouchCommands>)delegate
+- (id)init
 {
     self = [super init];
-    if (self != nil)
-    {
-        _delegate = delegate;
-     
-        // Enable touches on this layer and set the mode to "One by one"
-        self.touchMode = kCCTouchesOneByOne;
-        self.touchEnabled = YES;
+    if (self) {
+        CGSize winSize = [[CCDirector sharedDirector] winSize];
+        const CGFloat margin = 20;
+        
+        _joystick = [[Joystick alloc] init];
+        _joystick.position = ccp(winSize.width - _joystick.joystick.joystickRadius - margin,
+                                 _joystick.joystick.joystickRadius);
+        [self addChild:_joystick];
+        
+        _button = [[Button alloc] init];
+        _button.position = ccp(winSize.width - _button.button.radius - _joystick .joystick.joystickRadius*2 - margin,
+                               _button.button.radius);
+        [self addChild:_button];
     }
-    
     return self;
 }
 
-- (BOOL)ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event
+- (CGFloat)joystickAngle
 {
-    NSLog(@"Touched!");
-    
-    [_delegate fingerDown];
-    
-    return YES;
+    return _joystick.joystick.degrees;
 }
 
-- (void)ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event
+- (BOOL)isButtonToggled
 {
-    NSLog(@"Released!");
-    
-    [_delegate fingerUp];
+    return _button.button.active;
 }
 
 @end

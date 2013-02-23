@@ -8,17 +8,21 @@
 
 #import "Tank.h"
 #import "Constants.h"
+#import "ObjectiveChipmunk.h"
+#import "Projectile.h"
 
 
 @implementation Tank
 
 @dynamic isTurretAnimated;
+@dynamic turretAngle;
 
-- (id)initWithPosition:(CGPoint)position direction:(TankDirection)direction
+- (id)initWithSpace:(ChipmunkSpace *)space position:(CGPoint)position direction:(TankDirection)direction
 {
     self = [super init];
     if (self != nil)
     {
+        _space = space;
         _direction = direction;
         
         // Load the body and the turret sprites and compose them
@@ -30,8 +34,23 @@
         _turretSprite.position = ccpAdd(position, ccp(0, 12));
         [self addChild:_turretSprite z:kDepthTurret];
         
-        _bodySprite = [CCSprite spriteWithFile:@"Tank.png"];
-        _bodySprite.position = position;
+        _bodySprite = [CCPhysicsSprite spriteWithFile:@"Tank.png"];
+        
+        if (space != nil)
+        {
+            // Create a physics shape and body
+            _body = [ChipmunkBody staticBody];
+            _shape = [ChipmunkCircleShape circleWithBody:_body radius:(_bodySprite.contentSize.width / 2) offset:cpvzero];
+            _body.pos = position;
+            
+            // Add the shape to the physics world, we don't add the body since it's static
+            [_space addShape:_shape];
+            
+            // Add the physics body to the sprite so that the
+            // sprite's position is when the bodies position changes
+            _bodySprite.chipmunkBody = _body;
+        }        
+        
         [self addChild:_bodySprite z:kDepthTank];
         
         // Here we flip and tweak the sprites depending on the direction they face
@@ -50,6 +69,31 @@
     }
     
     return self;
+}
+
+- (void)shootProjectile:(Projectile *)projectile withPower:(float)power windAngle:(float)windAngle
+{
+    [self prepareProjectile:projectile];
+    
+    [projectile.chipmunkBody applyImpulse:cpvmult(cpvforangle(projectile.chipmunkBody.angle), power) offset:cpvzero];    
+}
+
+- (void)prepareProjectile:(Projectile *)projectile
+{
+    if (_direction == kTankDirectionRight)
+    {
+        _initialProjectileAngle = -CC_DEGREES_TO_RADIANS(_turretSprite.rotation);
+    }
+    else
+    {
+        _initialProjectileAngle = -CC_DEGREES_TO_RADIANS(_turretSprite.rotation + 180);
+    }
+    CGPoint endOfTurret = ccpRotateByAngle(ccp(_turretSprite.contentSize.width, 0), CGPointZero, _initialProjectileAngle);
+    _initialProjectilePosition = ccpAdd(_turretSprite.position, endOfTurret);
+    
+    projectile.chipmunkBody.pos = _initialProjectilePosition;
+    projectile.chipmunkBody.angle = _initialProjectileAngle;
+    projectile.chipmunkBody.vel = cpvzero;
 }
 
 - (void)animateTurret
@@ -78,6 +122,16 @@
 - (BOOL)isTurretAnimated
 {
     return (_turretSprite.numberOfRunningActions > 0);
+}
+
+- (CGFloat)turretAngle
+{
+    return _turretSprite.rotation;
+}
+
+- (void)setTurretAngle:(CGFloat)turretAngle
+{
+    _turretSprite.rotation = turretAngle;
 }
 
 @end

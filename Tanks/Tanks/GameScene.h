@@ -9,13 +9,23 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 #import "ControlsLayer.h"
+#import "ObjectiveChipmunk.h"
 
 @class Tank;
-@interface GameScene : CCScene<TouchCommands>
+@class Projectile;
+@interface GameScene : CCScene
 {
+    ChipmunkSpace *_space;
+    CCPhysicsDebugNode *_debugNode;
+    
     Tank *_tanks[2];
+    Projectile *_projectile;
+    
+    ccTime _accumulator;
     
     ControlsLayer *_controlsLayer;
+    
+    BOOL _removeProjectile;
     
     NSDictionary *_configuration;
 }
