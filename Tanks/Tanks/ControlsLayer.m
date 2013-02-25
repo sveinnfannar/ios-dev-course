@@ -10,22 +10,28 @@
 #import "Button.h"
 #import "Joystick.h"
 
+
 @implementation ControlsLayer
+
+@dynamic joystickAngle;
+@dynamic isButtonToggled;
+
+const CGFloat kMargin = 20;
 
 - (id)init
 {
     self = [super init];
-    if (self) {
+    if (self != nil)
+    {
         CGSize winSize = [[CCDirector sharedDirector] winSize];
-        const CGFloat margin = 20;
         
         _joystick = [[Joystick alloc] init];
-        _joystick.position = ccp(winSize.width - _joystick.joystick.joystickRadius - margin,
+        _joystick.position = ccp(winSize.width - _joystick.joystick.joystickRadius - kMargin,
                                  _joystick.joystick.joystickRadius);
         [self addChild:_joystick];
         
         _button = [[Button alloc] init];
-        _button.position = ccp(winSize.width - _button.button.radius - _joystick .joystick.joystickRadius*2 - margin,
+        _button.position = ccp(winSize.width - _button.button.radius - _joystick .joystick.joystickRadius*2 - kMargin,
                                _button.button.radius);
         [self addChild:_button];
     }

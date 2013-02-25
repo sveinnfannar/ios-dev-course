@@ -44,11 +44,14 @@ enum
         background.anchorPoint = CGPointZero;
         [self addChild:background z:kDepthSky];
         
+        // Create a Chipmunk space
         _space = [[ChipmunkSpace alloc] init];
         _space.gravity = cpv(0.0f, -GRAVITY);
 
+        // Setup collision handlers
         [_space setDefaultCollisionHandler:self begin:@selector(handleCollisionDetection:space:) preSolve:nil postSolve:nil separate:nil];
         
+        // Special node to display Chipmunk debug information
         _debugNode = [CCPhysicsDebugNode debugNodeForChipmunkSpace:_space];
 //        _debugNode.visible = NO;
         [self addChild:_debugNode z:kDepthDebugNode];
@@ -75,6 +78,7 @@ enum
         _controlsLayer = [[ControlsLayer alloc] init];
         [self addChild:_controlsLayer z:kDepthControls];
         
+        // Schedule the update loop. The "update:" method will be called on us.
         [self scheduleUpdate];
     }
     
@@ -83,7 +87,7 @@ enum
 
 - (BOOL)handleCollisionDetection:(cpArbiter *)arbiter space:(ChipmunkSpace *)space
 {
-    NSLog(@"ciao");
+    NSLog(@"Collision detected!");
     
     _removeProjectile = YES;
     
@@ -92,14 +96,19 @@ enum
 
 - (void)setupLandscape
 {
+    // Retrieve and pass the landscape image to the Chipmunk image sampler ("Autogeometry feature")
     NSURL *url = [[NSBundle mainBundle] URLForResource:@"Landscape" withExtension:@"png"];
     ChipmunkImageSampler *sampler = [ChipmunkImageSampler samplerWithImageFile:url isMask:NO];
     
+    // Extract the contour and simplify it
     ChipmunkPolylineSet *contour = [sampler marchAllWithBorder:NO hard:YES];
     ChipmunkPolyline *line = [contour lineAtIndex:0];
     ChipmunkPolyline *simpleLine = [line simplifyCurves:1];
     
+    // Create a static body for the terrain
     ChipmunkBody *terrainBody = [ChipmunkBody staticBody];
+    
+    // Add all shapes to the space
     NSArray *terrainShapes = [simpleLine asChipmunkSegmentsWithBody:terrainBody radius:0 offset:cpvzero];
     for (ChipmunkShape *shape in terrainShapes)
     {
@@ -108,6 +117,7 @@ enum
     
     CGSize winSize = [CCDirector sharedDirector].winSize;
     
+    // Create to invisible floors on the left and right of the scene
     ChipmunkBody *leftFloor = [ChipmunkBody staticBody];
     ChipmunkShape *leftFloorShape = [ChipmunkPolyShape boxWithBody:leftFloor width:(winSize.width * 2) height:20];
     leftFloor.pos = cpv(-winSize.width, 0);
@@ -138,6 +148,7 @@ enum
         
 		_accumulator -= fixedDelta;
 
+        // Simple logic to remove the projectile
         if (_removeProjectile == YES)
         {
             NSLog(@"remove sprite");
@@ -152,6 +163,7 @@ enum
         }
     }
     
+    // Poll the joystick and button
     if (_controlsLayer.isButtonToggled == YES && _projectile == nil)
     {
         _projectile = [[Projectile alloc] init];

@@ -75,11 +75,14 @@
 {
     [self prepareProjectile:projectile];
     
+    // Apply an impulse to shoot the projectile in the turret's direction
     [projectile.chipmunkBody applyImpulse:cpvmult(cpvforangle(projectile.chipmunkBody.angle), power) offset:cpvzero];    
 }
 
 - (void)prepareProjectile:(Projectile *)projectile
 {
+    // Here we calculate the initial position and rotation of the projectile
+    // that depends on the rotation of the turret
     if (_direction == kTankDirectionRight)
     {
         _initialProjectileAngle = -CC_DEGREES_TO_RADIANS(_turretSprite.rotation);
@@ -91,6 +94,7 @@
     CGPoint endOfTurret = ccpRotateByAngle(ccp(_turretSprite.contentSize.width, 0), CGPointZero, _initialProjectileAngle);
     _initialProjectilePosition = ccpAdd(_turretSprite.position, endOfTurret);
     
+    // Assign the new values to the projectile
     projectile.chipmunkBody.pos = _initialProjectilePosition;
     projectile.chipmunkBody.angle = _initialProjectileAngle;
     projectile.chipmunkBody.vel = cpvzero;
