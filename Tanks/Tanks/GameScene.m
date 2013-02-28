@@ -71,7 +71,6 @@ enum
         [self addChild:_tanks[kPlayerTwo] z:kDepthTank];
         
         // Animate tank 2 turret
-        [_tanks[kPlayerOne] animateTurret];
         [_tanks[kPlayerTwo] animateTurret];
         
         // Instanciate the ControlsLayer, pass ourselves as the delegate and add it to the scene
@@ -177,22 +176,6 @@ enum
     }
 
 }
-
-//- (void)fingerDown
-//{
-//    [_tanks[kPlayerOne] animateTurret];
-//    
-//    _projectile = [[Projectile alloc] init];
-//    
-//    [_projectile attachToSpace:_space andNode:self];
-//    
-//    [_tanks[kPlayerTwo] shootProjectile:_projectile withPower:200 windAngle:0];
-//}
-//
-//- (void)fingerUp
-//{
-////    [_tanks[kPlayerOne] stopTurretAnimation];
-//}
 
 
 @end
