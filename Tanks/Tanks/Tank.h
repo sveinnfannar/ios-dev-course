@@ -2,44 +2,54 @@
 //  Tank.h
 //  Tanks
 //
-//  Created by Sveinn Fannar Kristjánsson on 2/17/13.
-//  Copyright 2013 Marco Bancale. All rights reserved.
+//  Created by Sveinn Fannar Kristjánsson on 2/4/13.
+//  Copyright 2013 __MyCompanyName__. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
-#import "Constants.h"
 #import "ObjectiveChipmunk.h"
 
+// Declerations used by the class
 typedef enum
 {
     kTankDirectionLeft,
     kTankDirectionRight
 } TankDirection;
 
+
+// Forward class decleration
 @class Projectile;
+
+// Class decleration
 @interface Tank : CCNode
 {
+    // Instance variables
     ChipmunkSpace *_space;
-    
-    ChipmunkBody *_body;
-    ChipmunkShape *_shape;
-    CCPhysicsSprite *_bodySprite;
+    CCPhysicsSprite *_sprite;
     CCSprite *_turretSprite;
-    
+    ChipmunkShape *_shape;
     TankDirection _direction;
     
     cpVect _initialProjectilePosition;
-    float _initialProjectileAngle;    
+    float _initialProjectileAngle;
 }
 
+// Properties
+@property (nonatomic, readonly) ChipmunkBody *body;
+@property (nonatomic, readwrite) NSUInteger health;
 @property (nonatomic, readonly) BOOL isTurretAnimated;
-@property CGFloat turretAngle;
+@property CGFloat turrentAngle;
 
-- (id)initWithSpace:(ChipmunkSpace *)space position:(CGPoint)position direction:(TankDirection)direction;
+// Methods
+- (id)initWithSpace:(ChipmunkSpace *)space position:(cpVect)position;
+- (id)initWithSpace:(ChipmunkSpace *)space position:(cpVect)position direction:(TankDirection)direction;
+
+- (NSArray *)projectPointsForProjectile:(Projectile *)projectile;
 - (void)shootProjectile:(Projectile *)projectile withPower:(float)power windAngle:(float)windAngle;
 
 - (void)animateTurret;
 - (void)stopTurretAnimation;
+
 
 @end

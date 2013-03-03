@@ -2,23 +2,23 @@
 //  ControlsLayer.h
 //  Tanks
 //
-//  Created by Sveinn Fannar Kristjánsson on 2/17/13.
-//  Copyright 2013 Marco Bancale. All rights reserved.
+//  Created by Sveinn Fannar Kristjánsson on 2/12/13.
+//  Copyright 2013 __MyCompanyName__. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 
-@class Button;
 @class Joystick;
+@class Button;
 
 @interface ControlsLayer : CCLayer
 {
-    Button *_button;
     Joystick *_joystick;
+    Button *_button;
 }
 
-@property (readonly) BOOL isButtonToggled;
+@property (readonly) BOOL buttonToggled;
 @property (readonly) CGFloat joystickAngle;
 
 @end

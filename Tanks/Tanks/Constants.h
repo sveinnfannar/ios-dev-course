@@ -8,9 +8,10 @@
 
 #define GRAVITY 100.0f
 #define FIXED_TIME_STEP (1.0f / 240.0f)
+#define MAX_PROJECTED_POINTS 10
+#define PROJECTED_POINT_INTERVAL 30
+#define PROJECTION_STEPS 300
 
-
-// "z" depths for different objects on screen
 enum
 {
     kDepthSky,

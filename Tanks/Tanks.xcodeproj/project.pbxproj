@@ -28,6 +28,9 @@
 		41CF89A016D0F96700C26A1B /* Tank.m in Sources */ = {isa = PBXBuildFile; fileRef = 41CF899F16D0F96700C26A1B /* Tank.m */; };
 		41CF89A416D10ED200C26A1B /* ControlsLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 41CF89A316D10ED100C26A1B /* ControlsLayer.m */; };
 		A05A983216D055030041B142 /* Configuration.plist in Resources */ = {isa = PBXBuildFile; fileRef = A05A983116D055030041B142 /* Configuration.plist */; };
+		A0D2E70916E3BECC00F8BDB1 /* HudLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = A0D2E70816E3BECC00F8BDB1 /* HudLayer.m */; };
+		A0D2E70C16E3BF1600F8BDB1 /* HealthBar.m in Sources */ = {isa = PBXBuildFile; fileRef = A0D2E70B16E3BF1600F8BDB1 /* HealthBar.m */; };
+		A0D2E70F16E3BFBB00F8BDB1 /* MenuScene.m in Sources */ = {isa = PBXBuildFile; fileRef = A0D2E70E16E3BFBA00F8BDB1 /* MenuScene.m */; };
 		A0DA11D216D00E8D00DDFCF8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0DA11D116D00E8D00DDFCF8 /* QuartzCore.framework */; };
 		A0DA11D416D00E8D00DDFCF8 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0DA11D316D00E8D00DDFCF8 /* OpenGLES.framework */; };
 		A0DA11D616D00E8D00DDFCF8 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0DA11D516D00E8D00DDFCF8 /* OpenAL.framework */; };
@@ -236,6 +239,12 @@
 		41CF89A216D10ED100C26A1B /* ControlsLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlsLayer.h; sourceTree = "<group>"; };
 		41CF89A316D10ED100C26A1B /* ControlsLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ControlsLayer.m; sourceTree = "<group>"; };
 		A05A983116D055030041B142 /* Configuration.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Configuration.plist; path = Resources/Configuration.plist; sourceTree = "<group>"; };
+		A0D2E70716E3BECC00F8BDB1 /* HudLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HudLayer.h; sourceTree = "<group>"; };
+		A0D2E70816E3BECC00F8BDB1 /* HudLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HudLayer.m; sourceTree = "<group>"; };
+		A0D2E70A16E3BF1600F8BDB1 /* HealthBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HealthBar.h; sourceTree = "<group>"; };
+		A0D2E70B16E3BF1600F8BDB1 /* HealthBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HealthBar.m; sourceTree = "<group>"; };
+		A0D2E70D16E3BFBA00F8BDB1 /* MenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuScene.h; sourceTree = "<group>"; };
+		A0D2E70E16E3BFBA00F8BDB1 /* MenuScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuScene.m; sourceTree = "<group>"; };
 		A0DA11CE16D00E8D00DDFCF8 /* Tanks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tanks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0DA11D116D00E8D00DDFCF8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		A0DA11D316D00E8D00DDFCF8 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -676,10 +685,16 @@
 				41CF89A316D10ED100C26A1B /* ControlsLayer.m */,
 				41CF899916D0F26900C26A1B /* GameScene.h */,
 				41CF899A16D0F26900C26A1B /* GameScene.m */,
+				A0D2E70A16E3BF1600F8BDB1 /* HealthBar.h */,
+				A0D2E70B16E3BF1600F8BDB1 /* HealthBar.m */,
+				A0D2E70716E3BECC00F8BDB1 /* HudLayer.h */,
+				A0D2E70816E3BECC00F8BDB1 /* HudLayer.m */,
 				A0DA137016D00E8F00DDFCF8 /* IntroLayer.h */,
 				A0DA137116D00E8F00DDFCF8 /* IntroLayer.m */,
 				413A765B16D917500026BC04 /* Joystick.m */,
 				413A765C16D9175B0026BC04 /* Joystick.h */,
+				A0D2E70D16E3BFBA00F8BDB1 /* MenuScene.h */,
+				A0D2E70E16E3BFBA00F8BDB1 /* MenuScene.m */,
 				413A762016D8F25B0026BC04 /* Projectile.h */,
 				413A762116D8F25B0026BC04 /* Projectile.m */,
 				41CF899E16D0F96700C26A1B /* Tank.h */,
@@ -1423,6 +1438,9 @@
 				413A764216D90A900026BC04 /* SneakyJoystickSkinnedBase.m in Sources */,
 				413A765D16D9176E0026BC04 /* Button.m in Sources */,
 				413A765E16D9176E0026BC04 /* Joystick.m in Sources */,
+				A0D2E70916E3BECC00F8BDB1 /* HudLayer.m in Sources */,
+				A0D2E70C16E3BF1600F8BDB1 /* HealthBar.m in Sources */,
+				A0D2E70F16E3BFBB00F8BDB1 /* MenuScene.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

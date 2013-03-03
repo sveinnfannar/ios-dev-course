@@ -2,45 +2,45 @@
 //  Tank.m
 //  Tanks
 //
-//  Created by Sveinn Fannar Kristjánsson on 2/17/13.
-//  Copyright 2013 Marco Bancale. All rights reserved.
+//  Created by Sveinn Fannar Kristjánsson on 2/4/13.
+//  Copyright 2013 __MyCompanyName__. All rights reserved.
 //
 
 #import "Tank.h"
-#import "Constants.h"
-#import "ObjectiveChipmunk.h"
 #import "Projectile.h"
+#import "Constants.h"
 
+const int kShotPower = 220;
+const int kWindPower = 30;
 
 @implementation Tank
 
 @dynamic isTurretAnimated;
-@dynamic turretAngle;
+@dynamic turrentAngle;
 
-- (id)initWithSpace:(ChipmunkSpace *)space position:(CGPoint)position direction:(TankDirection)direction
+- (id)initWithSpace:(ChipmunkSpace *)space position:(cpVect)position;
+{
+    return [self initWithSpace:space position:position direction:kTankDirectionRight];
+}
+
+- (id)initWithSpace:(ChipmunkSpace *)space position:(cpVect)position direction:(TankDirection)direction
 {
     self = [super init];
     if (self != nil)
     {
+        // Initial setup
         _space = space;
         _direction = direction;
+        _health = 100;
         
-        // Load the body and the turret sprites and compose them
-        // Remember that Tank is an empty CCNode and we're adding these two sprites as children of the empty node
-        // This way we can decide the draw order and have the turret behind the tank's body
-        // Also note that we're not changing the position of the CCNode. Instead we "offset" the body and turret
-        // to the desired position. This will make sense when we integrate the physics engine
-        _turretSprite = [CCSprite spriteWithFile:@"Turret.png"];
-        _turretSprite.position = ccpAdd(position, ccp(0, 12));
-        [self addChild:_turretSprite z:kDepthTurret];
-        
-        _bodySprite = [CCPhysicsSprite spriteWithFile:@"Tank.png"];
+        // Load the sprite
+        _sprite = [CCPhysicsSprite spriteWithFile:@"Tank.png"];
         
         if (space != nil)
         {
             // Create a physics shape and body
             _body = [ChipmunkBody staticBody];
-            _shape = [ChipmunkCircleShape circleWithBody:_body radius:(_bodySprite.contentSize.width / 2) offset:cpvzero];
+            _shape = [ChipmunkCircleShape circleWithBody:_body radius:(_sprite.contentSize.width / 2) offset:cpvzero];
             _body.pos = position;
             
             // Add the shape to the physics world, we don't add the body since it's static
@@ -48,18 +48,23 @@
             
             // Add the physics body to the sprite so that the
             // sprite's position is when the bodies position changes
-            _bodySprite.chipmunkBody = _body;
-        }        
+            _sprite.chipmunkBody = _body;
+        }
         
-        [self addChild:_bodySprite z:kDepthTank];
+        // Add the tank sprite as a child of this tank node
+        [self addChild:_sprite];
         
-        // Here we flip and tweak the sprites depending on the direction they face
-        if (direction == kTankDirectionLeft)
+        // Load the turret sprite, position it and add it to the tank node
+        _turretSprite = [CCSprite spriteWithFile:@"Turret.png"];
+        _turretSprite.position = ccpAdd(_sprite.position, ccp(0, 12));
+        [self addChild:_turretSprite z:kDepthTurret];
+        
+        if (_direction == kTankDirectionLeft)
         {
             _turretSprite.flipX = YES;
             _turretSprite.anchorPoint = ccp(1.15f, 0.3f);
             _turretSprite.rotation = 60;
-            _bodySprite.flipX = YES;
+            _sprite.flipX = YES;
         }
         else
         {
@@ -71,18 +76,46 @@
     return self;
 }
 
+- (NSArray*)projectPointsForProjectile:(Projectile *)projectile
+{
+    [self prepareProjectile:projectile];
+    [projectile.chipmunkBody applyImpulse:cpvmult(cpvforangle(projectile.chipmunkBody.angle), kShotPower) offset:cpvzero];
+    
+    NSMutableArray* points = [[NSMutableArray alloc] init];
+    for (NSUInteger i = 0; i < PROJECTION_STEPS; ++i)
+    {
+        cpBodyUpdatePosition(projectile.body, FIXED_TIME_STEP);
+        cpBodyUpdateVelocity(projectile.body, cpv(0.0f, -GRAVITY), 1.0f, FIXED_TIME_STEP);
+        
+        // Check for collision
+        if (cpSpaceShapeQuery(_space.space, projectile.shape.shape, NULL, NULL) == true)
+        {
+            // draw shape
+            break;
+        }
+        
+        // Create points
+        if ((i % PROJECTED_POINT_INTERVAL) == 0 && points.count < MAX_PROJECTED_POINTS)
+        {
+            CGPoint position = (CGPoint)projectile.chipmunkBody.pos;
+            [points addObject:[NSValue valueWithCGPoint:position]];
+        }
+    }
+    
+    return points;
+}
+
 - (void)shootProjectile:(Projectile *)projectile withPower:(float)power windAngle:(float)windAngle
 {
     [self prepareProjectile:projectile];
     
-    // Apply an impulse to shoot the projectile in the turret's direction
-    [projectile.chipmunkBody applyImpulse:cpvmult(cpvforangle(projectile.chipmunkBody.angle), power) offset:cpvzero];    
+    [projectile.chipmunkBody applyImpulse:cpvmult(cpvforangle(projectile.chipmunkBody.angle), power) offset:cpvzero];
+    
+    projectile.chipmunkBody.force = cpvmult(cpvforangle(-CC_DEGREES_TO_RADIANS(windAngle)), kWindPower);
 }
 
 - (void)prepareProjectile:(Projectile *)projectile
 {
-    // Here we calculate the initial position and rotation of the projectile
-    // that depends on the rotation of the turret
     if (_direction == kTankDirectionRight)
     {
         _initialProjectileAngle = -CC_DEGREES_TO_RADIANS(_turretSprite.rotation);
@@ -94,7 +127,6 @@
     CGPoint endOfTurret = ccpRotateByAngle(ccp(_turretSprite.contentSize.width, 0), CGPointZero, _initialProjectileAngle);
     _initialProjectilePosition = ccpAdd(_turretSprite.position, endOfTurret);
     
-    // Assign the new values to the projectile
     projectile.chipmunkBody.pos = _initialProjectilePosition;
     projectile.chipmunkBody.angle = _initialProjectileAngle;
     projectile.chipmunkBody.vel = cpvzero;
@@ -114,7 +146,6 @@
     }
     CCRotateTo *rotateDown = [CCRotateTo actionWithDuration:5 angle:0];
     CCSequence *sequence = [CCSequence actionOne:rotateUp two:rotateDown];
-    
     [_turretSprite runAction:[CCRepeatForever actionWithAction:sequence]];
 }
 
@@ -128,14 +159,14 @@
     return (_turretSprite.numberOfRunningActions > 0);
 }
 
-- (CGFloat)turretAngle
+- (CGFloat)turrentAngle
 {
     return _turretSprite.rotation;
 }
 
-- (void)setTurretAngle:(CGFloat)turretAngle
+- (void)setTurrentAngle:(CGFloat)turrentAngle
 {
-    _turretSprite.rotation = turretAngle;
+    _turretSprite.rotation = turrentAngle;
 }
 
 @end

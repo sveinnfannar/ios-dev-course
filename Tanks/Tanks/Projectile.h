@@ -2,8 +2,8 @@
 //  Projectile.h
 //  Tanks
 //
-//  Created by Sveinn Fannar Kristjánsson on 2/23/13.
-//  Copyright 2013 Marco Bancale. All rights reserved.
+//  Created by Marco Bancale on 4.2.2013.
+//  Copyright 2013 __MyCompanyName__. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -19,6 +19,5 @@
 @property (nonatomic, readonly) ChipmunkShape *shape;
 
 - (void)attachToSpace:(ChipmunkSpace *)space andNode:(CCNode *)node;
-
 
 @end
