@@ -1,4 +1,4 @@
 ios-dev-course
 ==============
 
-Material from lectures
+Material from lectures Spring 2013
